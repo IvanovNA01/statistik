@@ -5,11 +5,14 @@ import matplotlib.pyplot as plt
 
 
 df = pd.read_csv(
-    r"C:\Users\Espad\Projects\python\statistik\ML_teaching\lesson_3_data__1_.csv",
+    r"C:\Users\IvanovNA01\Desktop\ВАЖНОЕ\datascience\statistic\statistik\statistik\ML_teaching\lesson_3_data__1_.csv",
     encoding="windows-1251",
 )
-df_user = df[["tc", "art_sp"]].rename(columns={"tc": "user_id", "art_sp": "brand_info"})
+df_user = df[["tc", "art_sp"]].rename(
+    columns={"tc": "user_id", "art_sp": "brand_info"})
 # split('$') - разделяет строку на список строк с разделителем $, в конце brand_info указан производитель [-1] = 1 эл-т с конца!
+
+
 def split_to_brand(brand_all):
     brand_split = brand_all.split(" ")[-1]
     return brand_split
@@ -61,10 +64,11 @@ loyalty_df = user_pay.merge(lovely_user_pay, on="user_id", how="inner").merge(
 loyalty_users = loyalty_df[loyalty_df.count_unique_brand == 1]
 
 # создание колонки коэфф лояльности доля любимых: count_lovely_payment/count_payment
-loyalty_df["loyalty_koeff"] = loyalty_df.count_lovely_payment / loyalty_df.count_payment
+loyalty_df["loyalty_koeff"] = loyalty_df.count_lovely_payment / \
+    loyalty_df.count_payment
 #!!!ПРИ ТАКОМ СПОСОБЕ ВИЗУАЛИЗАЦИИ ВСЕ ГРАФИКИ БУДУТ НА 1 ПЛОСКОСТИ
 # визуализация гистограммы распределения метрики лояльности
-ax = sns.displot(loyalty_df.loyalty_koeff)
+#ax = sns.displot(loyalty_df.loyalty_koeff)
 # по каждому бренду определили медиану коэф лояль покупателей и колич покупок
 loyalty_brands = (
     loyalty_df.groupby("lovely_brand", as_index=False)
