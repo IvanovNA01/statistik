@@ -1,22 +1,29 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from pathlib import Path
+# относительно заданный путь до рабочей дирректории
+path_to_taxi_dir = Path.cwd()/'ML_teaching'/'taxi_peru.csv'
+
+# относительно заданный путь до home дирректории
+home_dir = Path.home()
 
 
-path = r"C:\Users\IvanovNA01\Desktop\ВАЖНОЕ\datascience\statistic\statistik\statistik\ML_teaching\companies.csv"
+path_to_comp_dir = Path.cwd()/'ML_teaching'/"companies.csv"
 
 
-def read_n_agg(path):
-    df = pd.read_csv(path, sep=";").groupby('company').agg({"income": "mean"})
+def read_n_agg(path_to_comp_dir):
+    df = pd.read_csv(path_to_comp_dir, sep=";").groupby(
+        'company').agg({"income": "mean"})
     return df
 
 
 taxi = pd.read_csv(
-    r"C:\Users\IvanovNA01\Desktop\ВАЖНОЕ\datascience\statistic\statistik\statistik\ML_teaching\taxi_peru.csv", sep=";", parse_dates=['start_at', 'end_at', 'arrived_at'])
+    path_to_taxi_dir, sep=";", parse_dates=['start_at', 'end_at', 'arrived_at'])
 # возвращает серию колич уник значений по каждому типу  source
 count_platform = taxi['source'].value_counts()
-""" 
-iPhone     9741
+
+""" iPhone     9741
 web        7631
 Android    4909
 iPad        571
@@ -57,6 +64,6 @@ ax[1].set(xlabel='rider score', ylabel='Percentage')
 sns.despine()  # убрать часть рамки графика
 plt.show()
 
-# fig.show()
+fig.show()
 
 # print(rider_score_counts)
