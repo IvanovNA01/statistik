@@ -1,5 +1,4 @@
-import collections
-from os import rename
+
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
