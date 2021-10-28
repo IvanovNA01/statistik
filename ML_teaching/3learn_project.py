@@ -11,11 +11,16 @@ home_dir = Path.home()
 
 path_to_comp_dir = Path.cwd()/'ML_teaching'/"companies.csv"
 
+# функция чтения файла
 
-def read_n_agg(path_to_comp_dir):
-    df = pd.read_csv(path_to_comp_dir, sep=";").groupby(
+
+def read_n_agg(path):
+    df = pd.read_csv(path, sep=";").groupby(
         'company').agg({"income": "mean"})
     return df
+
+# вызов ф-ии
+# print(read_n_agg(path_to_comp_dir))
 
 
 taxi = pd.read_csv(
@@ -62,7 +67,7 @@ ax[1] = sns.barplot(x='rider_score', y='percentage',
                     data=rider_score_counts, color='red', alpha=0.5, ax=ax[1])
 ax[1].set(xlabel='rider score', ylabel='Percentage')
 sns.despine()  # убрать часть рамки графика
-plt.show()
+# plt.show()
 
 fig.show()
 
