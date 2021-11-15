@@ -67,7 +67,7 @@ ax[1] = sns.barplot(x='rider_score', y='percentage',
                     data=rider_score_counts, color='red', alpha=0.5, ax=ax[1])
 ax[1].set(xlabel='rider score', ylabel='Percentage')
 sns.despine()  # убрать часть рамки графика
-# plt.show()
+plt.show()
 
 fig.show()
 

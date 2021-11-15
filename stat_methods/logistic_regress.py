@@ -13,6 +13,11 @@ df = pd.read_csv(
     "https://stepic.org/media/attachments/course/524/train.csv", dtype=category_columns
 )
 
+df_full = pd.read_csv(
+    "https://stepic.org/media/attachments/course/524/train.csv"
+)
+print(df_full.head())
+
 # дропнули все NA
 data = df[df.Age.notnull()]
 
@@ -77,7 +82,7 @@ Pclass  Survived
         Yes         47
 2       No           6
 1       No           3
-dtype: int64 """
+dtype: int64
 
 data = pd.read_csv("https://stepic.org/media/attachments/course/524/train.csv")
 data = data[data.Age.notnull()]  # Удаляем нулевые значения в возрасте
@@ -86,4 +91,4 @@ d = data[["Sex", "Pclass", "Survived"]]  # Вырезаем нужные нам 
 d.loc[d["Survived"] == 0, "Survived"] = "No"
 d.loc[d["Survived"] == 1, "Survived"] = "Yes"
 d.value_counts()["female"]  # Для женщин
-# d.value_counts()['male'] # Для мужчин
+# d.value_counts()['male'] # Для мужчин """

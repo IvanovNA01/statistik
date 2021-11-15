@@ -1,0 +1,8 @@
+--Как разрабатывать приложение
+docker pull yaboma/ds-dash - докер, аналогичный серверному, но с установленными расширениями для корректной работы гита и dash
+docker run -e JUPYTER_ENABLE_LAB=yes -p 8888:8888 -p 8050:8050 -v %path_to_workdir%:/home/jovyan/work yaboma/ds-dash  start-notebook.sh --NotebookApp.password='sha1:55aa9cca3062:a675d9f057eb31d2c3b8a2ed1224a3d7e1594675'- запускается jupyterlab (пароль sinus(60))
+Присоединяемся к контейнеру через vscode (или работаем в jupyterlab)
+*Создаем venv  в конде с питоном 3.7 (conda create -n  python=3.7) (уже сделано)
+активируем conda activate py37_ai_kit
+Разрабатываем, доставляем библиотеки в venv (pip install -r requirements.txt)
+Отправлено из Mail.ru для Android
